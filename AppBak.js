@@ -34,7 +34,6 @@ import Signup from "./pages/signupBAK"
 import LoginFull from "./pages/LoginFull"
 import Index  from "./pages/Index";
 
-
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -103,7 +102,6 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 export default function MiniDrawer() {
-
 
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -183,6 +181,16 @@ export default function MiniDrawer() {
 
         <List>
 
+          
+            <ListItem button key={3} component = {Link} to = "/main">
+              <ListItemIcon>
+
+                <MailIcon /> 
+
+              </ListItemIcon>
+              <ListItemText primary={"Main"} />
+            </ListItem>
+
 
         </List>
 
@@ -192,6 +200,18 @@ export default function MiniDrawer() {
     </Box>
   
   <switch>
+
+    <Route path={"/main"}>
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <DrawerHeader />
+        <Index>
+        socialLogin={socialLogin}
+        currentUser={currentUser}
+        getFirebase={props.getFirebase}
+        history={props.history}
+        </Index>
+      </Box>
+    </Route>
 
     <Route path={"/login"}>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
